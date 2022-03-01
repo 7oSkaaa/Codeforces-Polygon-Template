@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Icons
+*.ico
+
+# Windows File
+*.ini
