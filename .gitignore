@@ -31,8 +31,15 @@
 *.out
 *.app
 
+<<<<<<< HEAD
 # Icons
 *.ico
 
 # Windows File
+=======
+# Icon
+*.ico
+
+# windows file
+>>>>>>> 6fbcddc266c6a519089be76e1d227022c4d1df5b
 *.ini
