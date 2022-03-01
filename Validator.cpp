@@ -12,7 +12,6 @@ int main(int argc, char* argv[]) {
     for (int testCase = 1; testCase <= testCaseCount; testCase++) {
         setTestCase(testCase);
         
-        inf.readEoln();
     }
     inf.readEof();
     return 0;

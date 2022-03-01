@@ -17,7 +17,7 @@ using pii = pair < ll, ll >;
 
 namespace generator {
 
-	ll gen_int(ll l, ll r){
+	ll gen_int(ll l = -INF, ll r = INF){
 		uniform_int_distribution < ll > ludo(l, r); return ludo(rng);
 	}
 
@@ -57,12 +57,12 @@ namespace generator {
     vector < ll > gen_permutation(int len = 0, ll minRange = -INF, ll maxRange = INF){
         assert(len >= 0 && len <= 5e6);
         vector < ll > vec(len);
-        iota(vec.begin(), vec.end(), 0);
+        iota(vec.begin(), vec.end(), 1);
         shuffle(vec.begin(), vec.end(), rng);
         return vec;
     }
 
-    string gen_bit_int(int len = 0, int l = 1, int r = 10){
+    string gen_big_int(int len = 0, int l = 1, int r = 10){
 		assert(len >= 0 && len <= 5e6);
 		string str(len, '0');
 		for (char &ch: str) 

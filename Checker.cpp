@@ -10,27 +10,6 @@ using namespace std;
 // ouf - stream with the contestant output.
 // ans - stream with the jury answer.
 
-set < ll > cheat_primes;
-
-bool is_prime(ll n){
-    if(n < 2 || (n % 2 == 0 && n != 2)) return false;
-    for(int i = 3; i <= sqrt(n); i += 2)
-        if(n % i == 0) return false;
-    return true;
-}
-
-void build_cheats(ll num){
-    if(num > 1e9) return;
-    if(is_prime(num) || !num){
-        cheat_primes.insert(num);
-        build_cheats(num * 10 + 2);
-        build_cheats(num * 10 + 3);
-        build_cheats(num * 10 + 5);
-        build_cheats(num * 10 + 7);
-        build_cheats(num * 10 + 9);
-    }
-}
-
 bool Check_answers(string a, string b){
     
     vector < string > va, vb;
@@ -59,8 +38,6 @@ bool Check_answers(string a, string b){
     if(sz(num) != sz(Ans))
         quitf(_wa, "Your number lenght not equal %d", sz(Ans));
 
-    if(!cheat_primes.count(stoll(num)))
-        quitf(_wa, "Your answer isn't valid");
 
     return true;
 }
@@ -69,11 +46,11 @@ int main(int argc, char* argv[]) {
     registerTestlibCmd(argc, argv);
     
     string strAnswer;
-    int n = 0;
+    int TestCases = 0;
 
     while (!ans.eof()) {
-        
-        setTestCase(n + 1);
+        TestCases++;
+        setTestCase(TestCases);
         
         string j = ans.readString("-1|[0-9]+", "jury");
 
@@ -86,13 +63,11 @@ int main(int argc, char* argv[]) {
         if(p == "" && ouf.eof())
             break;
 
-        n++;
-
         Check_answers(j, p);
     }
     
-    if (n == 1)
+    if (TestCases == 1)
         quitf(_ok, "1 line");
     
-    quitf(_ok, "%d lines", n);
+    quitf(_ok, "%d lines", TestCases);
 }
