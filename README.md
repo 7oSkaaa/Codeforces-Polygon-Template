@@ -26,10 +26,11 @@ There is folder `testlib-master` in it there are a lot of examples of checkers, 
 
 **Linux**:
 
-  - **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `/usr/local/include`**
+- **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `/usr/local/include`**
 
 **Windows**:
-  - **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `include` folder in your compiler folder**
+
+- **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `include` folder in your compiler folder**
 
 ---
 
