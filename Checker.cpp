@@ -1,4 +1,4 @@
-#include "testlib-master/testlib.h"
+#include "testlib.h"
 #include <bits/stdc++.h>
 
 #define ll long long
