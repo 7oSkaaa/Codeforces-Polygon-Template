@@ -90,4 +90,8 @@ The test cases files will exported in `Tests` folder in the same directory of th
 
 ---
 
-This a tutorial for polygon and how to use it [Ali Ibrahim Site](https://ali-ibrahim137.github.io/competitive/programming/2020/09/27/polygon-codeforces.html)
+### You can see tutorial video for polygon site, how to use it and write a problem live from [here](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
+
+---
+
+#### This a tutorial for polygon and how to use it [Ali Ibrahim Site](https://ali-ibrahim137.github.io/competitive/programming/2020/09/27/polygon-codeforces.html)
