@@ -24,7 +24,12 @@ There are 4 files to use
 
 There is folder `testlib-master` in it there are a lot of examples of checkers, generators, validators, and there is the header file that we include it in validator.cpp and checker.cpp `testlib.h`
 
-**You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `/usr/local/include`**
+**Linux**:
+
+  - **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `/usr/local/include`**
+
+**Windows**:
+  - **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `include` folder in your compiler folder**
 
 ---
 
