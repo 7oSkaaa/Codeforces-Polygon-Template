@@ -49,7 +49,7 @@ void Solve(){
 int main(){
     AhMeD_HoSSaM();
     int t = 1;
-    cin >> t;
+    //cin >> t;
     while(t--)
         Solve();
     return 0;

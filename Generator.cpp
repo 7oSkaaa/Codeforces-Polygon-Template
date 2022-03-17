@@ -126,11 +126,11 @@ ostream& operator << (ostream &other, const vector < pair < int, int > > &v) {
 }
 
 // comment the just below line if test cases required
-//#define SINGLE_TEST
+#define SINGLE_TEST
 constexpr int Tests = 1000, Sum_of_Tests = 2e5;
 
 // number of files
-constexpr int Files = 20;
+constexpr int Files = 10;
 
 // complete this function according to the requirements
 void Generate_test() {
