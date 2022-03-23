@@ -40,7 +40,7 @@ namespace generator {
     vector < ll > gen_array(int len = 0, ll minRange = -INF, ll maxRange = INF, bool Increasing = false, bool Decreasing = false){
         assert(len >= 0 and len <= 5e6);
         vector < ll > vec(len);
-        ll Delta = maxRange / len;
+        ll Delta = max(maxRange / len, 1ll);
         for (auto &x: vec) x = gen_int(minRange, maxRange);
         if(Increasing){
             for(int i = 0; i < len; i++)
