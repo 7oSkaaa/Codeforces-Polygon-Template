@@ -29,6 +29,19 @@ namespace generator {
         return str;
     }
 
+    string gen_string_u_and_l(int len = 0, ll l = 1, ll r = 26){
+        assert(len >= 0 && len <= 5e6);
+        string str(len, 'A');
+        for(auto& ch : str){
+            bool is_upper = gen_int(0, 1);
+            if(is_upper)
+                ch += gen_int(l, r) - 1;
+            else
+                ch += gen_int(32 + l, 32 + r) - 1;
+        }
+        return str;
+    }
+
     string gen_palindrome(int len = 0, bool upperCase = false, ll l = 1, ll r = 26){
         assert(len >= 0 && len <= 5e6);
         string str(len, (upperCase ? 'A' : 'a'));
@@ -134,7 +147,7 @@ constexpr int Files = 10;
 
 // complete this function according to the requirements
 void Generate_test() {
-    
+    cout << gen_string_u_and_l(200) << '\n';
 }
 
 // make name of text file
