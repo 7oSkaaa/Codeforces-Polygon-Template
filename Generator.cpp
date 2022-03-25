@@ -147,7 +147,7 @@ constexpr int Files = 10;
 
 // complete this function according to the requirements
 void Generate_test() {
-    cout << gen_string_u_and_l(200) << '\n';
+    
 }
 
 // make name of text file
