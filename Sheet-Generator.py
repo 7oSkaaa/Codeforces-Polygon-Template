@@ -13,7 +13,7 @@ load_dotenv()
 def scrapper(problem):
     parts = problem.split('/')
     if 'group' in parts:
-        return 'Problem in private group'
+        return 'Invalid Problem'
     if 'problemset' in parts:
         idx = parts.index('problem')
         return parts[idx + 1] + '-' + parts[idx + 2]
@@ -51,6 +51,10 @@ def main():
         return
 
     problems = [scrapper(problem) for problem in get_problem_links('Problems_Links.txt')]
+        
+    if 'Invalid Problem' in problems:
+        print('Invalid Problem in Problems...')
+        return
         
     driver = create_driver()
     time.sleep(2)
