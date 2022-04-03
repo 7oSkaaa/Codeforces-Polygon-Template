@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 load_dotenv()
 
+# To make the problem in the valid format for being added to codeforces
 def scrapper(problem):
     if 'polygon' in problem:
         return problem
