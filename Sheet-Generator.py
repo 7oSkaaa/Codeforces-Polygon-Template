@@ -8,6 +8,19 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 load_dotenv()
 
+# colors to use
+class bcolors:
+    HEADER = '\033[35m'
+    OKBLUE = '\033[94m'
+    OKYELLOW = '\033[33m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[31m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
 # To make the problem in the valid format for being added to codeforces
 def scrapper(problem):
     if 'polygon' in problem:
