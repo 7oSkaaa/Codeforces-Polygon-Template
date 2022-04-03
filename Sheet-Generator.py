@@ -65,9 +65,11 @@ def main():
     if 'Invalid Problem' in problems:
         print('Invalid Problem in Problems...')
         return
-        
+    
     driver = create_driver()
     time.sleep(2)
+    
+    # sign in codeforces
     driver.get("https://codeforces.com/enter") 
     time.sleep(3)
     find_element(driver, By.ID, 'handleOrEmail').send_keys(email)
@@ -75,6 +77,8 @@ def main():
     time.sleep(2)
     find_element(driver, By.CLASS_NAME, 'submit').click()
     time.sleep(2)
+    
+    # go to new mushup page
     driver.get('https://codeforces.com/mashup/new')
     time.sleep(2)
     contest_name = driver.find_element(By.CSS_SELECTOR, '#contestName')
