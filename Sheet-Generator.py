@@ -33,6 +33,7 @@ def scrapper(problem):
 def get_problem_links(file):
     f = open(file, "r")
     problems = f.read().split('\n')
+    problems.remove('')
     return problems
 
 
@@ -61,7 +62,7 @@ def main():
     
     #check if there missing environment variables
     if not sheet_name or not email or not password:
-        print(f'{red}Missing environment variables')
+        print(f'{red}\nMissing environment variables')
         return
 
     # get the problems in the valid format
@@ -69,7 +70,12 @@ def main():
         
     #check if there is invalid problems
     if 'Invalid Problem' in problems:
-        print(f'{red}Invalid Problem in Problems...')
+        print(f'{red}\nInvalid Problem in Problems...')
+        return
+    
+    #check if there is problem to add or not
+    if not problems:
+        print(f'\n{red}Invalid in parsing problems or the Problems_Links.txt is empty\n')
         return
     
     driver = create_driver()
@@ -84,12 +90,12 @@ def main():
     time.sleep(2)
     find_element(driver, By.CLASS_NAME, 'submit').click()
     time.sleep(2)
-    print(f'{green}logging in successfuly ✅\n\n')
+    print(f'{green}\nlogging in successfuly ✅\n\n')
     
     # go to new mushup page
     driver.get('https://codeforces.com/mashup/new')
     time.sleep(2)
-    print(f'{blue}Creating the sheet...\n')
+    print(f'{blue}\nCreating the sheet...\n')
     contest_name = driver.find_element(By.CSS_SELECTOR, '#contestName')
     contest_name.send_keys(sheet_name)
     duration = driver.find_element(By.CSS_SELECTOR, '#contestDuration')
@@ -104,7 +110,7 @@ def main():
         time.sleep(2)
         
     driver.find_element(By.CSS_SELECTOR, 'html body div#body div div#pageContent.content-with-sidebar div._MashupContestEditFrame_frame form._MashupContestEditFrame_saveMashup.table-form input.submit').click()
-    print(f'{green}Sheet has been added successfully ✅\n\n')
+    print(f'{green}\nSheet has been added successfully ✅\n\n')
     time.sleep(3)
     driver.close()
     
