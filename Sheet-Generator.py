@@ -44,6 +44,7 @@ def main():
     email = os.getenv('CODEFORCES_HANDLE')
     password = os.getenv('CODEFORCES_PASSWORD')
     sheet_name = os.getenv('SHEET_NAME')
+    sheet_duration = os.getenv('SHEET_DURATION')
     
     if not sheet_name or not email or not password:
         print('Missing environment variables')
@@ -69,7 +70,7 @@ def main():
     contest_name = driver.find_element(By.CSS_SELECTOR, '#contestName')
     contest_name.send_keys(sheet_name)
     duration = driver.find_element(By.CSS_SELECTOR, '#contestDuration')
-    duration.send_keys('10080')
+    duration.send_keys(sheet_duration)
     
     for problem in problems:
         problem_id = driver.find_element(By.CSS_SELECTOR, '._MashupContestEditFrame_addProblem > label:nth-child(2) > input:nth-child(1)')
