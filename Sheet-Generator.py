@@ -23,12 +23,14 @@ def scrapper(problem):
         return parts[idx - 1] + '-' + parts[idx + 1]
     
 
+# Get links of the problem from the file
 def get_problem_links(file):
     f = open(file, "r")
     problems = f.read().split('\n')
     return problems
 
 
+# Create chrome driver
 def create_driver():
     chrome_options = webdriver.ChromeOptions()
     # chrome_options.add_argument("--headless")
