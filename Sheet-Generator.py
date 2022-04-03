@@ -95,7 +95,7 @@ def main():
         time.sleep(2)
         
     driver.find_element(By.CSS_SELECTOR, 'html body div#body div div#pageContent.content-with-sidebar div._MashupContestEditFrame_frame form._MashupContestEditFrame_saveMashup.table-form input.submit').click()
-    time.sleep(2)
+    time.sleep(3)
     driver.close()
     
     
