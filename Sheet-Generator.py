@@ -40,6 +40,7 @@ def create_driver():
     return driver
 
 
+# make timeout 30 seconds for command find element
 def find_element(driver, by, value, timeout=30):
     return WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, value)))
 
