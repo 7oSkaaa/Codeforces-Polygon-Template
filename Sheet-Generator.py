@@ -90,7 +90,7 @@ def main():
     time.sleep(2)
     find_element(driver, By.CLASS_NAME, 'submit').click()
     time.sleep(2)
-    print(f'{green}\nlogging in successfuly ✅\n\n')
+    print(f'{green}\nlogging in successfuly ✅\n')
     
     # go to new mushup page
     driver.get('https://codeforces.com/mashup/new')
@@ -110,7 +110,7 @@ def main():
         time.sleep(2)
         
     driver.find_element(By.CSS_SELECTOR, 'html body div#body div div#pageContent.content-with-sidebar div._MashupContestEditFrame_frame form._MashupContestEditFrame_saveMashup.table-form input.submit').click()
-    print(f'{green}\nSheet has been added successfully ✅\n\n')
+    print(f'{green}\nSheet has been added successfully ✅\n')
     time.sleep(3)
     driver.close()
     
