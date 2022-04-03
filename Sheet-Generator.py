@@ -83,7 +83,7 @@ def main():
     # sign in codeforces
     driver.get("https://codeforces.com/enter") 
     time.sleep(3)
-    print(f'{blue} logging in...\n')
+    print(f'{blue}logging in...\n')
     find_element(driver, By.ID, 'handleOrEmail').send_keys(email)
     find_element(driver, By.ID, 'password').send_keys(password)
     time.sleep(2)
