@@ -10,6 +10,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 load_dotenv()
 
 def scrapper(problem):
+    if 'polygon' in problem:
+        return problem
     parts = problem.split('/')
     if 'group' in parts or 'task' in parts or 'leetcode.com' in parts:
         return 'Invalid Problem'
