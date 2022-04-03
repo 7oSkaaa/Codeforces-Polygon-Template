@@ -45,12 +45,16 @@ def find_element(driver, by, value, timeout=30):
     return WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, value)))
 
 
+
 def main():
+    
+    # get environment variables we need
     email = os.getenv('CODEFORCES_HANDLE')
     password = os.getenv('CODEFORCES_PASSWORD')
     sheet_name = os.getenv('SHEET_NAME')
     sheet_duration = os.getenv('SHEET_DURATION')
     
+    #check if there missing environment variables
     if not sheet_name or not email or not password:
         print('Missing environment variables')
         return
