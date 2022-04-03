@@ -12,7 +12,7 @@ load_dotenv()
 
 def scrapper(problem):
     parts = problem.split('/')
-    if 'group' in parts:
+    if 'group' in parts or 'task' in parts or 'leetcode.com' in parts:
         return 'Invalid Problem'
     if 'problemset' in parts:
         idx = parts.index('problem')
@@ -60,8 +60,6 @@ def main():
     time.sleep(2)
     driver.get("https://codeforces.com/enter") 
     time.sleep(3)
-    driver.execute_script("window.stop();")
-    time.sleep(2)
     find_element(driver, By.ID, 'handleOrEmail').send_keys(email)
     find_element(driver, By.ID, 'password').send_keys(password)
     time.sleep(2)
@@ -69,7 +67,6 @@ def main():
     time.sleep(2)
     driver.get('https://codeforces.com/mashup/new')
     time.sleep(2)
-    driver.execute_script("window.stop();")
     contest_name = driver.find_element(By.CSS_SELECTOR, '#contestName')
     contest_name.send_keys(sheet_name)
     duration = driver.find_element(By.CSS_SELECTOR, '#contestDuration')
