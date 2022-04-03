@@ -86,6 +86,7 @@ def main():
     duration = driver.find_element(By.CSS_SELECTOR, '#contestDuration')
     duration.send_keys(sheet_duration)
     
+    # add the problems to the gym
     for problem in problems:
         problem_id = driver.find_element(By.CSS_SELECTOR, '._MashupContestEditFrame_addProblem > label:nth-child(2) > input:nth-child(1)')
         problem_id.send_keys(problem)
