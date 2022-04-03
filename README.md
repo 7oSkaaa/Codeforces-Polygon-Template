@@ -1,6 +1,6 @@
 # Codeforces-Sheet-Generator
 
-It's a simple script to generate a mush on code forces, the script will accept the public problem urls only or polygon problems.
+It's a simple script to generate a mushup on code forces, the script will accept the public problem urls only or polygon problems.
 
 ## Requirements
 
