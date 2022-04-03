@@ -78,6 +78,11 @@ def main():
         print(f'\n{red}Invalid in parsing problems or the Problems_Links.txt is empty\n')
         return
     
+    # check if there is more than 26 problems
+    if len(problems) > 26:
+        print(f'{red}\nCannot create sheet on codeforces with more than 26 problems')
+        return
+    
     driver = create_driver()
     time.sleep(2)
     
