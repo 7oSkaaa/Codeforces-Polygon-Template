@@ -8,17 +8,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 load_dotenv()
 
-# colors to use
-class bcolors:
-    HEADER = '\033[35m'
-    OKBLUE = '\033[94m'
-    OKYELLOW = '\033[33m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[31m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+# Colors to use
+red = '\033[38;5;196m'
+green = '\033[38;5;40m'
+blue = '\033[34m'
+gold = '\033[38;5;220m'
+white = '\33[37m'
+magenta = '\033[35m'
+bold = '\033[01m'
+reset = '\033[0m'
 
 
 # To make the problem in the valid format for being added to codeforces
@@ -68,7 +66,7 @@ def main():
     
     #check if there missing environment variables
     if not sheet_name or not email or not password:
-        print('Missing environment variables')
+        print(f'Missing environment variables')
         return
 
     # get the problems in the valid format
