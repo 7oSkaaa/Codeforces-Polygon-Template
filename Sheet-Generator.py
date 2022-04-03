@@ -58,8 +58,10 @@ def main():
         print('Missing environment variables')
         return
 
+    # get the problems in the valid format
     problems = [scrapper(problem) for problem in get_problem_links('Problems_Links.txt')]
         
+    #check if there is invalid problems
     if 'Invalid Problem' in problems:
         print('Invalid Problem in Problems...')
         return
