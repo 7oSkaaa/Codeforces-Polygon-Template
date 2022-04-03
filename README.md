@@ -5,6 +5,10 @@ It's a simple script to generate a mush on code forces, the script will accept t
 ## Requirements
 
 - Copy the `.env.example` file and rename it to `.env` and provide the required environment variables.
+  - CODEFORCES_HANDLE
+  - CODEFORCES_PASSWORD
+  - SHEET_NAME
+  - SHEET_DURATION
 - Copy the urls of the problems to `Problems_Links.txt`
 
 ```bash
