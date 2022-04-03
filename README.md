@@ -3,7 +3,9 @@
 It's a simple script to generate a mush on code forces.
 
 ## Requirements
-Copy the .env.example file and rename it to .env and provide the required environment variables.
+
+- Copy the `.env.example` file and rename it to `.env` and provide the required environment variables.
+- Copy the urls of the problems to `Problems_Links.txt`
 
 ```bash
 # install requirements
