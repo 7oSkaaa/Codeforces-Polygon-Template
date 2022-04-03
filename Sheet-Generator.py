@@ -66,7 +66,7 @@ def main():
     
     #check if there missing environment variables
     if not sheet_name or not email or not password:
-        print(f'Missing environment variables')
+        print(f'{red}Missing environment variables')
         return
 
     # get the problems in the valid format
@@ -74,7 +74,7 @@ def main():
         
     #check if there is invalid problems
     if 'Invalid Problem' in problems:
-        print('Invalid Problem in Problems...')
+        print(f'{red}Invalid Problem in Problems...')
         return
     
     driver = create_driver()
@@ -83,15 +83,18 @@ def main():
     # sign in codeforces
     driver.get("https://codeforces.com/enter") 
     time.sleep(3)
+    print(f'{blue} logging in...\n')
     find_element(driver, By.ID, 'handleOrEmail').send_keys(email)
     find_element(driver, By.ID, 'password').send_keys(password)
     time.sleep(2)
     find_element(driver, By.CLASS_NAME, 'submit').click()
     time.sleep(2)
+    print(f'{green}logging in successfuly ✅\n\n')
     
     # go to new mushup page
     driver.get('https://codeforces.com/mashup/new')
     time.sleep(2)
+    print(f'{blue}Creating the sheet...\n')
     contest_name = driver.find_element(By.CSS_SELECTOR, '#contestName')
     contest_name.send_keys(sheet_name)
     duration = driver.find_element(By.CSS_SELECTOR, '#contestDuration')
@@ -106,6 +109,7 @@ def main():
         time.sleep(2)
         
     driver.find_element(By.CSS_SELECTOR, 'html body div#body div div#pageContent.content-with-sidebar div._MashupContestEditFrame_frame form._MashupContestEditFrame_saveMashup.table-form input.submit').click()
+    print(f'{green}Sheet has been added successfully ✅\n\n')
     time.sleep(3)
     driver.close()
     
