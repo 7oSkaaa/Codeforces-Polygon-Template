@@ -29,24 +29,24 @@ namespace generator {
         return str;
     }
 
-    string gen_string_u_and_l(int len = 0, ll l = 1, ll r = 26){
+    string gen_string_u_and_l(int len = 0, char l = 'a', char r = 'z'){
         assert(len >= 0 && len <= 5e6);
         string str(len, 'A');
         for(auto& ch : str){
             bool is_upper = gen_int(0, 1);
             if(is_upper)
-                ch += gen_int(l, r) - 1;
+                ch = 'A' + gen_int(l - 'A', r - 'A');
             else
-                ch += gen_int(32 + l, 32 + r) - 1;
+                ch = 'a' + gen_int(l - 'a', r - 'A');
         }
         return str;
     }
 
-    string gen_palindrome(int len = 0, bool upperCase = false, ll l = 1, ll r = 26){
+    string gen_palindrome(int len = 0, bool upperCase = false, char l = 'a', char r = 'z'){
         assert(len >= 0 && len <= 5e6);
         string str(len, (upperCase ? 'A' : 'a'));
         for (int left = 0, right = len - 1; left <= right; left++, right--)
-            str[left] = str[right] = str[left] + gen_int(l, r) - 1;
+            str[left] = str[right] = str[left] + gen_int(l - (upperCase ? 'A' : 'a'), r - (upperCase ? 'A' : 'a'));
         return str;
     }
 
@@ -66,6 +66,14 @@ namespace generator {
         return vec;
     }
 
+    vector < vector < ll > > gen_array_2D(int row = 0, int col = 0, ll minRange = -INF, int maxRange = INF){
+		assert(row >= 0 and row <= 5e6 && col >= 0 && col <= 5e6 && row * col <= 1e8);
+		vector < vector < ll > > vec(row);
+		for(int i = 0; i < row; i++)
+			vec[i] = gen_array(col);
+		return vec;
+	}
+
     vector < ll > gen_permutation(int len = 0, ll minRange = -INF, ll maxRange = INF){
         assert(len >= 0 && len <= 5e6);
         vector < ll > vec(len);
@@ -74,14 +82,29 @@ namespace generator {
         return vec;
     }
 
-    string gen_big_int(int len = 0, int l = 1, int r = 10){
+    string gen_big_int(int len = 0, char l = '0', char r = '9'){
 		assert(len >= 0 && len <= 5e6);
 		string str(len, '0');
 		for (char &ch: str) 
-			ch += gen_int(l, r) - 1;
-		if(str.front() == '0') str.front() += gen_int(l + 1, r) - 1;		
+			ch += gen_int(l - '0', r - '0');
+		if(str.front() == '0') str.front() += gen_int(l - '0' + 1, r - '0');
 		return str;
   	}
+
+    vector < pii > gen_array_of_pairs(int len = 0, ll minRange = -INF, ll maxRange = INF){
+        assert(len >= 0 and len <= 5e6);
+        vector < pii > vec(len);
+        for (auto &[l, r]: vec) l = gen_int(minRange, maxRange), r = gen_int(l, maxRange);
+        return vec;
+    }
+
+    char gen_char(bool upperCase = false, bool Digit = false, char l = 'a', char r = 'z'){
+		if(upperCase)
+			return 'A' + gen_int(l - 'A', r - 'A');
+		if(Digit)
+			return '0' + gen_int(l - '0', r - '0');
+		return 'a' + gen_int(l - 'a', r - 'a');
+	}
 
     vector < pii > gen_tree(ll n = 0){
         assert(n >= 0);
@@ -139,11 +162,11 @@ ostream& operator << (ostream &other, const vector < pair < int, int > > &v) {
 }
 
 // comment the just below line if test cases required
-#define SINGLE_TEST
-constexpr int Tests = 1000, Sum_of_Tests = 2e5;
+//#define SINGLE_TEST
+constexpr int Tests = 10000, Sum_of_Tests = 2e5;
 
 // number of files
-constexpr int Files = 10;
+constexpr int Files = 20;
 
 // complete this function according to the requirements
 void Generate_test() {
