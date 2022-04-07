@@ -66,6 +66,20 @@ namespace generator {
         return vec;
     }
 
+    vector < ll > gen_unique_array(int len = 0, ll minRange = -INF, ll maxRange = INF, bool Increasing = false, bool Decreasing = false){
+        assert(len >= 0 and len <= 5e6);
+        vector < ll > vec;
+        set < ll > st;
+        while(st.size() != len)
+            st.insert(gen_int(minRange, maxRange));
+        for(auto& i : st)
+            vec.push_back(i);
+        if(Increasing) return vec;
+        if(Decreasing) return vector(vec.rbegin(), vec.rend());
+        shuffle(vec.begin(), vec.end(), rng);
+        return vec;
+    }
+
     vector < vector < ll > > gen_array_2D(int row = 0, int col = 0, ll minRange = -INF, int maxRange = INF){
 		assert(row >= 0 and row <= 5e6 && col >= 0 && col <= 5e6 && row * col <= 1e8);
 		vector < vector < ll > > vec(row);
