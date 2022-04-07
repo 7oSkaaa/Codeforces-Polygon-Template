@@ -65,6 +65,9 @@ there are many functions to help you to generate test like:
 - gen_string
   - generate a string `Upper Case` or `Lower Case` and in any range you want with your length
 
+- gen_string_u_and_l
+  - generate a string `Upper Case` and `Lower Case` and in any range you want with your length
+ 
 - gen_int
   - generate a integer number in the range you want from `L` to `R`
 
@@ -74,11 +77,20 @@ there are many functions to help you to generate test like:
 - gen_array
   - generate an array with your size and in range you want, you can make the array `normal` or `increasing` or `decreasing`
 
+- gen_array_2D
+  - generate an array_2D with your size and in range you want.
+
 - gen_permutation
   - generate an array with a permutation of `N`
 
 - gen_bit_int
-  - generate a string with you length consit of digit in the range that you want
+  - generate a string with your length consit of digit in the range that you want
+
+- gen_array_of_pairs
+  - generate an array of pairs with your length in the range that you want, you can choose if the pair is interval or not.
+
+- gen_char
+  - gen character in range that you want 
 
 - gen_tree
   - generate a tree or `bamboo` like tree or `star` like tree
