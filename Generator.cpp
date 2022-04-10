@@ -4,6 +4,8 @@ using namespace std;
 #define ll long long
 #define accuracy chrono::steady_clock::now().time_since_epoch().count()
 #define Num_of_Digits(n) ((int)log10(n) + 1)
+#define all(vec) (vec.begin(), vec.end())
+#define sz(x) (int) x.size()
 
 const int N = 1e6 + 4;
 
@@ -70,7 +72,7 @@ namespace generator {
         assert(len >= 0 and len <= 5e6);
         vector < ll > vec;
         set < ll > st;
-        while(st.size() != len)
+        while(sz(st) != len)
             st.insert(gen_int(minRange, maxRange));
         for(auto& i : st)
             vec.push_back(i);
@@ -170,7 +172,7 @@ template < typename T = int > ostream& operator << (ostream &other, const vector
     return other;
 }
 
-ostream& operator << (ostream &other, const vector < pair < int, int > > &v) {
+template < typename T = int > ostream& operator << (ostream &other, const vector < pair < T, T > > &v) {
     for (const auto &x : v) other << x.first << ' ' << x.second << '\n';
     return other;
 }
