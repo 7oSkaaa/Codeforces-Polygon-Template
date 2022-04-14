@@ -32,8 +32,7 @@ def scrapper(problem):
 # Get links of the problem from the file
 def get_problem_links(file):
     f = open(file, "r")
-    problems = f.read().split('\n')
-    problems.remove('')
+    problems = f.read().strip().split('\n')
     return problems
 
 
