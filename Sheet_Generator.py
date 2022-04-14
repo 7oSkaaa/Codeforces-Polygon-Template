@@ -40,16 +40,17 @@ def get_problem_links(file):
 # Create chrome driver
 def create_driver():
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=chrome_options)
+    driver.set_page_load_timeout(25)
     return driver
 
 
 # make timeout 30 seconds for command find element
 def find_element(driver, by, value, timeout=30):
-    return WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, value)))
+    return WebDriverWait(driver, timeout).until(EC.visibility_of_element_located((by, value)), f'{red}Timeout while trying to reach an element')
 
 
 def main():
@@ -84,37 +85,30 @@ def main():
         return
     
     driver = create_driver()
-    time.sleep(2)
     
     # sign in codeforces
     driver.get("https://codeforces.com/enter") 
-    time.sleep(3)
-    print(f'{blue}logging in...\n')
+    print(f'{blue}\nlogging in...\n')
     find_element(driver, By.ID, 'handleOrEmail').send_keys(email)
     find_element(driver, By.ID, 'password').send_keys(password)
-    time.sleep(2)
     find_element(driver, By.CLASS_NAME, 'submit').click()
-    time.sleep(2)
     print(f'{green}\nlogging in successfuly ✅\n')
+    time.sleep(3)
     
     # go to new mushup page
     driver.get('https://codeforces.com/mashup/new')
-    time.sleep(2)
     print(f'{blue}\nCreating the sheet...\n')
-    contest_name = driver.find_element(By.CSS_SELECTOR, '#contestName')
-    contest_name.send_keys(sheet_name)
-    duration = driver.find_element(By.CSS_SELECTOR, '#contestDuration')
-    duration.send_keys(sheet_duration)
+    time.sleep(3)
+    find_element(driver, By.CSS_SELECTOR, '#contestName').send_keys(sheet_name)
+    find_element(driver, By.CSS_SELECTOR, '#contestDuration').send_keys(sheet_duration)
     
     # add the problems to the gym
     for problem in problems:
-        problem_id = driver.find_element(By.CSS_SELECTOR, '._MashupContestEditFrame_addProblem > label:nth-child(2) > input:nth-child(1)')
-        problem_id.send_keys(problem)
-        time.sleep(2)
-        driver.find_element(By.CSS_SELECTOR, '._MashupContestEditFrame_addProblemLink > img:nth-child(1)').click()
-        time.sleep(2)
+        find_element(driver, By.CSS_SELECTOR, '._MashupContestEditFrame_addProblem > label:nth-child(2) > input:nth-child(1)').send_keys(problem)
+        find_element(driver, By.CSS_SELECTOR, '._MashupContestEditFrame_addProblemLink > img:nth-child(1)').click()
+        time.sleep(1)
         
-    driver.find_element(By.CSS_SELECTOR, 'html body div#body div div#pageContent.content-with-sidebar div._MashupContestEditFrame_frame form._MashupContestEditFrame_saveMashup.table-form input.submit').click()
+    find_element(driver, By.CSS_SELECTOR, 'html body div#body div div#pageContent.content-with-sidebar div._MashupContestEditFrame_frame form._MashupContestEditFrame_saveMashup.table-form input.submit').click()
     print(f'{green}\nSheet has been added successfully ✅\n')
     time.sleep(3)
     driver.close()
