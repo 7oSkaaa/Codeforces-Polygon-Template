@@ -19,7 +19,7 @@ def scrapper(problem):
     if 'polygon' in problem:
         return problem
     parts = problem.split('/')
-    if 'group' in parts or 'task' in parts or 'leetcode.com' in parts:
+    if 'group' in parts or 'task' in parts or 'leetcode.com' in parts or not problem:
         return 'Invalid Problem'
     if 'problemset' in parts:
         idx = parts.index('problem')
@@ -43,7 +43,6 @@ def create_driver():
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(options=chrome_options)
-    driver.set_page_load_timeout(25)
     return driver
 
 
@@ -91,8 +90,14 @@ def main():
     find_element(driver, By.ID, 'handleOrEmail').send_keys(email)
     find_element(driver, By.ID, 'password').send_keys(password)
     find_element(driver, By.CLASS_NAME, 'submit').click()
-    print(f'{green}\nlogging in successfuly ✅\n')
     time.sleep(3)
+    
+    # check if the driver can logging in successfuly
+    if 'Login' in driver.title:
+        print(f'{red}\nFailed to logginng in to codeforces')
+        return
+    else:
+        print(f'{green}\nlogging in successfuly ✅\n')
     
     # go to new mushup page
     driver.get('https://codeforces.com/mashup/new')
