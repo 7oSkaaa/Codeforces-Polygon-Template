@@ -102,7 +102,7 @@ The test cases files will exported in `Tests` folder in the same directory of th
 
 ---
 
-### You can see tutorial video for polygon site, how to use it and write a problem live from [here](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
+### You can see tutorial video for polygon site, how to use it and write a problem live from [](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
 
 ---
 
