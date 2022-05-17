@@ -77,6 +77,9 @@ there are many functions to help you to generate test like:
 - gen_array
   - generate an array with your size and in range you want, you can make the array `normal` or `increasing` or `decreasing`
 
+- gen_unique_array
+  - generate an unique array with your size and in range you want, you can make the array `normal` or `increasing` or `decreasing`
+
 - gen_array_2D
   - generate an array_2D with your size and in range you want.
 
