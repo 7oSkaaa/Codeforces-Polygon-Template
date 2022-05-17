@@ -23,11 +23,14 @@ namespace generator {
 		uniform_int_distribution < ll > ludo(l, r); return ludo(rng);
 	}
 
-    string gen_string(int len = 0, bool upperCase = false, ll l = 1, ll r = 26) {
+    string gen_string(int len = 0, bool upperCase = false, char l = 'a', char r = 'z') {
         assert(len >= 0 && len <= 5e6);
         string str(len, (upperCase ? 'A' : 'a'));
         for (char &ch: str)
-            ch += gen_int(l, r) - 1;
+            if(upperCase)
+                ch = 'A' + gen_int(l - 'A', r - 'A');
+            else
+                ch = 'a' + gen_int(l - 'a', r - 'A');
         return str;
     }
 
@@ -107,10 +110,10 @@ namespace generator {
 		return str;
   	}
 
-    vector < pii > gen_array_of_pairs(int len = 0, ll minRange = -INF, ll maxRange = INF){
+    vector < pii > gen_array_of_pairs(int len = 0, ll minRange = -INF, ll maxRange = INF, bool Interval = false){
         assert(len >= 0 and len <= 5e6);
         vector < pii > vec(len);
-        for (auto &[l, r]: vec) l = gen_int(minRange, maxRange), r = gen_int(l, maxRange);
+        for (auto &[l, r]: vec) l = gen_int(minRange, maxRange), r = gen_int((Interval ? l : minRange), maxRange);
         return vec;
     }
 
