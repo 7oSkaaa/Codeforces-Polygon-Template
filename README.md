@@ -56,9 +56,9 @@ There are generator builtin-functions you can use from `testlib.h`, and you can 
 
 If you will use `Generator.cpp` file, these information will help you to use it.
 
-- Choose number of file you want to print in line `134`
-- Choose number of test cases in each file from line `131`
-- If your problem has a single test case uncomment line `130`
+- Choose number of file you want to print in line `188`
+- Choose number of test cases in each file from line `185`
+- If your problem has a single test case uncomment line `184`
 
 there are many functions to help you to generate test like:
 
