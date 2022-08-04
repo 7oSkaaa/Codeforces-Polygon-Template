@@ -168,14 +168,6 @@ namespace generator {
 
 using namespace generator;
 
-template < typename T = int > ostream& operator << (ostream &other, const vector<T> &v) {
-    for(int i = 0; i < sz(v); i++){
-        cout << v[i];
-        if(i != sz(v) - 1) cout << " ";
-    }
-    return other;
-}
-
 template < typename T = int > ostream& operator << (ostream &other, const vector < pair < T, T > > &v) {
     for (const auto &x : v) 
         other << x.first << ' ' << x.second << '\n';
@@ -188,7 +180,7 @@ constexpr int tests_count = 100, sum_of_n = 2e5;
 
 // complete this function according to the requirements
 void Generate_tests() {
-       
+        
 }
 
 // make name of text file
