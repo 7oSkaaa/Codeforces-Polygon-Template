@@ -85,7 +85,7 @@ namespace generator {
 		assert(row >= 0 and row <= 5e6 && col >= 0 && col <= 5e6 && row * col <= 1e8);
 		vector < vector < ll > > vec(row);
 		for(int i = 0; i < row; i++)
-			vec[i] = gen_array(col);
+			vec[i] = gen_array(col, minRange, maxRange);
 		return vec;
 	}
 
@@ -180,7 +180,7 @@ constexpr int tests_count = 100, sum_of_n = 2e5;
 
 // complete this function according to the requirements
 void Generate_tests() {
-        
+    
 }
 
 // make name of text file
