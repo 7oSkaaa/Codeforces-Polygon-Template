@@ -184,11 +184,11 @@ template < typename T = int > ostream& operator << (ostream &other, const vector
 
 // comment the just below line if test cases required
 #define SINGLE_TEST
-constexpr int Tests = 20, Sum_of_Tests = 2e5;
+constexpr int tests_count = 100, sum_of_n = 2e5;
 
 // complete this function according to the requirements
-void Generate_test() {
-
+void Generate_tests() {
+       
 }
 
 // make name of text file
@@ -209,10 +209,5 @@ string made_txt(int t){
 
 int main(int argc, char* argv[]){
     registerGen(argc, argv, 1);
-    int T = 1;
-    #ifndef SINGLE_TEST
-        T = gen_int(1, Tests), cout << T << '\n';
-    #endif
-    for(int t = 1; t <= T; t++)
-        Generate_test();
+    Generate_tests();
 }
