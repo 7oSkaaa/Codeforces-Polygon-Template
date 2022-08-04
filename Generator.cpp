@@ -8,12 +8,9 @@ using namespace std;
 #define sz(x) (int) x.size()
 
 const int N = 1e6 + 4;
-
-int32_t permutation[N];
-
 const ll INF = 1LL << 60;
 
-using pii = pair < ll, ll >;
+template < typename T = ll > using Pair = pair < T, T >;
 
 namespace generator {
 
@@ -74,7 +71,8 @@ namespace generator {
             st.insert(gen_int(minRange, maxRange));
         for(auto& i : st)
             vec.push_back(i);
-        if(Increasing) return vec;
+        if(Increasing) 
+            return vec;
         if(Decreasing) {
             reverse(vec.begin(), vec.end());
             return vec;
@@ -91,7 +89,7 @@ namespace generator {
 		return vec;
 	}
 
-    vector < ll > gen_permutation(int len = 0, ll minRange = -INF, ll maxRange = INF){
+    vector < ll > gen_permutation(int len = 0){
         assert(len >= 0 && len <= 5e6);
         vector < ll > vec(len);
         iota(vec.begin(), vec.end(), 1);
@@ -108,10 +106,11 @@ namespace generator {
 		return str;
   	}
 
-    vector < pii > gen_array_of_pairs(int len = 0, ll minRange = -INF, ll maxRange = INF, bool Interval = false){
+    vector < Pair < > > gen_array_of_pairs(int len = 0, ll minRange = -INF, ll maxRange = INF, bool Interval = false){
         assert(len >= 0 and len <= 5e6);
-        vector < pii > vec(len);
-        for (auto &[l, r]: vec) l = gen_int(minRange, maxRange), r = gen_int((Interval ? l : minRange), maxRange);
+        vector < Pair < > > vec(len);
+        for (auto &[l, r]: vec) 
+            l = gen_int(minRange, maxRange), r = gen_int((Interval ? l : minRange), maxRange);
         return vec;
     }
 
@@ -123,9 +122,9 @@ namespace generator {
 		return 'a' + gen_int(l - 'a', r - 'a');
 	}
 
-    vector < pii > gen_tree(ll n = 0){
+    vector < Pair < > > gen_tree(ll n = 0){
         assert(n >= 0);
-        vector < pii > res(n ? n - 1 : 0);
+        vector < Pair < > > res(n ? n - 1 : 0);
         // if you like to have bamboo like tree or star like tree uncomment below 8 lines
         /*if (rng() % 5 == 0) { // bamboo like tree
             for (int i = 1; i < n; ++i) res[i-1] = {i, i + 1};
@@ -135,8 +134,9 @@ namespace generator {
             for (int i = 2; i <= n; ++i) res[i-2] = {1, i};
             return res;
         }*/
-        iota(permutation, permutation + 1 + n, 0);
-        shuffle(permutation + 1, permutation + 1 + n);
+        vector < ll > permutation(n + 1);
+        iota(permutation.begin() + 1, permutation.begin() +  n + 1, 0);
+        shuffle(permutation.begin() + 1, permutation.begin() + n + 1);
         for(int i = 2; i <= n; ++i){
             ll u = i, v = gen_int(1 , i - 1);
             u = permutation[u], v = permutation[v];
@@ -146,12 +146,12 @@ namespace generator {
         return res;
     }
   
-    vector < pii > simple_graph(ll n = 0, ll m = 0) {
+    vector < Pair < > > simple_graph(ll n = 0, ll m = 0) {
         assert(n > 0 && m >= n);
         ll max_edges = n * (n - 1) / 2;
         assert(m <= max_edges);
-        vector < pii > res = gen_tree(n);
-        set < pii > edge(res.begin(), res.end());
+        vector < Pair < > > res = gen_tree(n);
+        set < Pair < > > edge(res.begin(), res.end());
         for (int i = n; i <= m; ++i) {
             while (true) {
                 ll u = gen_int(1, n), v = gen_int(1, n);
@@ -169,12 +169,16 @@ namespace generator {
 using namespace generator;
 
 template < typename T = int > ostream& operator << (ostream &other, const vector<T> &v) {
-    for (const T &x: v) other << x << ' ';
+    for(int i = 0; i < sz(v); i++){
+        cout << v[i];
+        if(i != sz(v) - 1) cout << " ";
+    }
     return other;
 }
 
 template < typename T = int > ostream& operator << (ostream &other, const vector < pair < T, T > > &v) {
-    for (const auto &x : v) other << x.first << ' ' << x.second << '\n';
+    for (const auto &x : v) 
+        other << x.first << ' ' << x.second << '\n';
     return other;
 }
 
@@ -186,6 +190,7 @@ constexpr int Tests = 20, Sum_of_Tests = 2e5;
 void Generate_test() {
 
 }
+
 // make name of text file
 // freopen(made_txt(f).c_str(), "w", stdout);
 string made_txt(int t){
@@ -197,8 +202,8 @@ string made_txt(int t){
 
 // use generator in Codeforces Polygon
 /*
-    <#list 1..30 as s>
-        Generator ${s} > $
+    <#list begin..end as s>
+        Name_of_Generator_file ${s} > $
     </#list>
 */
 

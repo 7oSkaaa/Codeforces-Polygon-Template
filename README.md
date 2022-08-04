@@ -67,7 +67,7 @@ there are many functions to help you to generate test like:
 
 - gen_string_u_and_l
   - generate a string `Upper Case` and `Lower Case` and in any range you want with your length
- 
+  
 - gen_int
   - generate a integer number in the range you want from `L` to `R`
 
@@ -90,7 +90,7 @@ there are many functions to help you to generate test like:
   - generate an array of pairs with your length in the range that you want, you can choose if the pair is interval or not.
 
 - gen_char
-  - gen character in range that you want 
+  - gen character in range that you want
 
 - gen_tree
   - generate a tree or `bamboo` like tree or `star` like tree
@@ -98,8 +98,15 @@ there are many functions to help you to generate test like:
 - gen_graph
   - generate a simple graph
 
-The test cases files will exported in `Tests` folder in the same directory of the `Generator.cpp` file
+---
 
+You can appload the generator to polygon in your problem and use to generate tests with this command.
+
+```bash
+<#list begin..end as s>
+	Name_of_Generator_file ${s} > $
+</#list>
+```
 ---
 
 ### You can see tutorial video for polygon site, how to use it and write a problem live from [](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
