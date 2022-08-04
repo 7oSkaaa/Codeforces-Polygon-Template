@@ -109,7 +109,9 @@ You can appload the generator to polygon in your problem and use to generate tes
 ```
 ---
 
-### You can see tutorial video for polygon site, how to use it and write a problem live from [](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
+### You can see tutorial video for polygon site, how to use it and write a problem live from [Here](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
+
+### Another Part for the last update in Polygon from [here](https://drive.google.com/file/d/1t5aJPvVRx-D_cuaQuQJ8WV3vh6qnbPDw/view?usp=sharing)
 
 ---
 
