@@ -113,4 +113,4 @@ You can appload the generator to polygon in your problem and use to generate tes
 
 ---
 
-#### This a tutorial for polygon and how to use it [Ali Ibrahim Site](https://ali-ibrahim137.github.io/competitive/programming/2020/09/27/polygon-codeforces.html)
+#### This a tutorial for polygon and how to use it [Here](https://quangloc99.github.io/2022/03/08/polygon-codeforces-tutorial.html#stress-testing-our-first-test-generator)
