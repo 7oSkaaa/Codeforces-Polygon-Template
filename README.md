@@ -1,4 +1,4 @@
-# Codeforces-Polygon-Template
+# Codeforces Polygon Template
 
 ### Template for codeforces contest preperation on [polygon](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiU3cXDq6b2AhWQ-6QKHY7YAX0QFnoECAoQAQ&url=https%3A%2F%2Fpolygon.codeforces.com%2F&usg=AOvVaw3i2v31m8II47sBuBT85c8t)
 
