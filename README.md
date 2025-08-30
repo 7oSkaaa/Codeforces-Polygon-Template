@@ -1,118 +1,90 @@
 # Codeforces Polygon Template
 
-### Template for codeforces contest preperation on [polygon](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiU3cXDq6b2AhWQ-6QKHY7YAX0QFnoECAoQAQ&url=https%3A%2F%2Fpolygon.codeforces.com%2F&usg=AOvVaw3i2v31m8II47sBuBT85c8t)
+Template for creating Codeforces Polygon problems with a ready-to-use single-file generator, validator, and checker based on testlib.
 
----
+## Repository layout
 
-There are 4 files to use
+- Generator.cpp — single-file generator with inlined helpers (numbers/arrays/strings/graphs/utils) using testlib’s rnd
+- Validator.cpp — place your input validation here (uses testlib)
+- Checker.cpp — place your custom checker here (uses testlib)
+- Solution.cpp — reference/author solution (optional)
+- input.txt, output.txt — optional local I/O for Solution.cpp
+- testlib/ — bundled testlib sources (headers, examples).
 
-- Validator.cpp
-  - to make validator for the problem to check the validation of the test case
+## testlib
 
-- Checker.cpp
-  - to make special checker for your problem when there a lot of valid solutions
+Polygon provides testlib.h on the server side automatically. For local builds, use the header from this repo:
 
-- Solution.cpp
-  - to put your solution in it and upload it
+- Include with: #include "testlib.h"
+- Build with: add -I testlib to your compiler flags
+- More docs in this repo: [testlib/README.md](testlib/README.md)
 
-- Generator.cpp
-  - to generate the test cases that you need in your problem
+## Build locally (macOS/Linux)
 
-`input.txt` and `output.txt` we use them with `Solution.cpp` file but you can ignore them and use your terminal instead of files
+Example compile commands:
 
----
+```
+g++ -std=gnu++17 -O2 -Wall -Wextra -I testlib -o gen Generator.cpp
+g++ -std=gnu++17 -O2 -Wall -Wextra -I testlib -o validator Validator.cpp
+g++ -std=gnu++17 -O2 -Wall -Wextra -I testlib -o checker Checker.cpp
+```
 
-There is folder `testlib-master` in it there are a lot of examples of checkers, generators, validators, and there is the header file that we include it in validator.cpp and checker.cpp `testlib.h`
+## Generator: inlined helpers you can call
 
-**Linux**:
+Namespaces available inside `Generator.cpp`:
 
-- **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `/usr/local/include`**
+- gen_numbers: random(l, r), random_range, random_real, random_exclude, random_weighted
+- gen_arrays: random(len, l, r, unique, sorted), permutation(n), matrix, pairs, subset, partition, progressions, bit_array, shuffled, strictly_increasing/decreasing, random_with_sum
+- gen_strings: CaseType, random, palindrome, random_alphanum, random_custom, random_strings, palindromes
+- gen_graphs: tree, simple_graph, weighted_graph, directed_graph, dag, bipartite, star, cycle, complete, regular, tree_with_diameter, chain_tree
+- gen_utils: print overloads for vectors, pairs, tuples
 
-**Windows**:
+Skeleton to fill in inside `Generate_tests()`:
 
-- **You should copy to `testlib.h` and `testlib.h.gch` from `testlib-master` to `include` folder in your compiler folder**
+```
+int T = opt<int>("T", 1);           // number of testcases per file
+long long sumNCap = opt<long long>("sumN", 200000LL); // optional cap for sum of n
+if (T > 1) std::cout << T << '\n';
+for (int tc = 1; tc <= T; ++tc) {
+  // write your per-test generation here
+  // e.g., int n = gen_numbers::random<int>(1, 10);
+  // auto a = gen_arrays::random<int>(n, -100, 100);
+  // std::cout << n << '\n';
+  // gen_utils::print(a);
+}
+```
 
----
+## Using generator in Polygon
 
-You can read information about `testlib.h` from [here](https://github.com/7oSkaaa/Codeforces-Polygon-Template/blob/main/testlib-master/README.md).
+Upload `Generator.cpp` as the generator. Use a FreeMarker loop in “Generate tests” to produce multiple files. Pass the loop index as a seed (last arg is used by testlib’s registerGen for seeding), and add your optional CLI flags (like T, n, ranges):
 
-You can see these tutorial, they will help you to write a good problem
-
-- [Writing Statements tutorial](https://polygon.codeforces.com/docs/statements-tex-manual?ccid=f5bddf71bb1644157d570cc2043d9df7&session=68e51869dd74479dbd85d7d89b67012852f5a418)
-
-- [Validators tutorial](https://codeforces.com/blog/entry/18426)
-
-- [Checker tutorial](https://codeforces.com/blog/entry/18431)
-
-- [Generators tutorial](https://codeforces.com/blog/entry/18291)
-
-- [Interactors tutorial](https://codeforces.com/blog/entry/18455)
-
-- [testlib.h information](https://codeforces.com/blog/entry/18289)
-
----
-
-There are generator builtin-functions you can use from `testlib.h`, and you can use `Generator.cpp` file.
-
-If you will use `Generator.cpp` file, these information will help you to use it.
-
-- Choose number of file you want to print in line `134`
-- Choose number of test cases in each file from line `131`
-- If your problem has a single test case uncomment line `130`
-
-there are many functions to help you to generate test like:
-
-- gen_string
-  - generate a string `Upper Case` or `Lower Case` and in any range you want with your length
-
-- gen_string_u_and_l
-  - generate a string `Upper Case` and `Lower Case` and in any range you want with your length
-  
-- gen_int
-  - generate a integer number in the range you want from `L` to `R`
-
-- gen_palindrome
-  - generate a palindrome string with your length in the range that you want
-
-- gen_array
-  - generate an array with your size and in range you want, you can make the array `normal` or `increasing` or `decreasing`
-
-- gen_array_2D
-  - generate an array_2D with your size and in range you want.
-
-- gen_permutation
-  - generate an array with a permutation of `N`
-
-- gen_bit_int
-  - generate a string with your length consit of digit in the range that you want
-
-- gen_array_of_pairs
-  - generate an array of pairs with your length in the range that you want, you can choose if the pair is interval or not.
-
-- gen_char
-  - gen character in range that you want
-
-- gen_tree
-  - generate a tree or `bamboo` like tree or `star` like tree
-
-- gen_graph
-  - generate a simple graph
-
----
-
-You can appload the generator to polygon in your problem and use to generate tests with this command.
-
-```bash
+```
 <#list begin..end as s>
-	Name_of_Generator_file ${s} > $
+  ./gen --T=1 ${s} > $
 </#list>
 ```
----
 
-### You can see tutorial video for polygon site, how to use it and write a problem live from [Here](https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing)
+Examples:
 
-### Another Part for the last update in Polygon from [here](https://drive.google.com/file/d/1t5aJPvVRx-D_cuaQuQJ8WV3vh6qnbPDw/view?usp=sharing)
+```
+<#list 1..20 as s>
+  ./gen --T=1 --n=1000 --l=-1000000000 --r=1000000000 ${s} > $
+</#list>
+```
 
----
+If your input format requires multiple testcases in a single file, print T first and generate T tests per run (set --T accordingly) and keep one output file per run.
 
-#### This a tutorial for polygon and how to use it [Here](https://quangloc99.github.io/2022/03/08/polygon-codeforces-tutorial.html)
+## Learning resources
+
+- [Validators tutorial](https://codeforces.com/blog/entry/18426)
+- [Checker tutorial](https://codeforces.com/blog/entry/18431)
+- [Generators tutorial](https://codeforces.com/blog/entry/18291)
+- [Interactors tutorial](https://codeforces.com/blog/entry/18455)
+- [testlib.h information](https://codeforces.com/blog/entry/18289)
+- [Polygon statements manual](https://polygon.codeforces.com/docs/statements-tex-manual)
+- [Polygon usage tutorial](https://quangloc99.github.io/2022/03/08/polygon-codeforces-tutorial.html)
+
+### Videos
+
+- Polygon walkthrough (part 1): https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing
+- Polygon updates (part 2): https://drive.google.com/file/d/1t5aJPvVRx-D_cuaQuQJ8WV3vh6qnbPDw/view?usp=sharing

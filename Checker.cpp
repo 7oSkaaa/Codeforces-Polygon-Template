@@ -10,6 +10,12 @@ using namespace std;
 // ouf - stream with the contestant output.
 // ans - stream with the jury answer.
 
+
+// _ok - correct answer
+// _wa - wrong answer
+// _pe - presentation error
+// _fail - checker failure
+
 int main(int argc, char* argv[]) {
     registerTestlibCmd(argc, argv);
     int TestCases = 0;
