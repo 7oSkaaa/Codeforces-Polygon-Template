@@ -88,3 +88,31 @@ If your input format requires multiple testcases in a single file, print T first
 
 - Polygon walkthrough (part 1): https://drive.google.com/file/d/198dWogj2xSGWZxVMNtCRMqVnawgVRXLX/view?usp=sharing
 - Polygon updates (part 2): https://drive.google.com/file/d/1t5aJPvVRx-D_cuaQuQJ8WV3vh6qnbPDw/view?usp=sharing
+
+## Quickstart: tester + scripts
+
+This repository now includes a minimal tester and helper scripts to scaffold and run local samples.
+
+- `tester/tester.py`: run a solution against `sample.in` and compare with `sample.out`.
+- `scripts/new_problem.py`: scaffold `problems/<name>/solution.py`, `sample.in`, `sample.out`.
+- `scripts/run.py`: run the tester for a given problem.
+
+Example workflow:
+
+1. Create a new problem scaffold:
+
+```bash
+python scripts/new_problem.py example
+```
+
+2. Edit `problems/example/solution.py` and fill `problems/example/sample.in` / `sample.out`.
+
+3. Run the sample test:
+
+```bash
+python scripts/run.py example
+```
+
+The tester supports Python solutions and compares outputs (use `--trim` to ignore trailing whitespace).
+
+If you'd like, I can also add a more featureful CLI, add language templates (C++), or wire a CI workflow.
